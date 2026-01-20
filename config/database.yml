@@ -1,32 +1,30 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
+# PostgreSQL. Versions 12+ recommended.
+# gem install pg
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
+# Ensure the PostgreSQL gem is defined in your Gemfile
+# gem "pg"
+
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  username: sigelbanco
+  password: sigelsenha
+  host: localhost
+  port: 5432
 
 development:
   <<: *default
-  database: storage/development.sqlite3
+  database: sigel_development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: storage/test.sqlite3
+  database: sigel_test
 
-
-# SQLite3 write its data on the local filesystem, as such it requires
-# persistent disks. If you are deploying to a managed service, you should
-# make sure it provides disk persistence, as many don't.
-#
-# Similarly, if you deploy your application as a Docker container, you must
-# ensure the database is located in a persisted volume.
 production:
   <<: *default
-  # database: path/to/persistent/storage/production.sqlite3
+  database: sigel_production
+  # Recomenda-se sobrescrever via ENV em produção real:
+  # username: <%= ENV["DB_USERNAME"] %>
+  # password: <%= ENV["DB_PASSWORD"] %>
+  # host: <%= ENV["DB_HOST"] %>
