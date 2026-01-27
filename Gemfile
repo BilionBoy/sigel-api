@@ -66,3 +66,11 @@ end
 
   # Mapear Models
   gem "annotate", "~> 3.2"
+
+  gem "active_model_serializers" # Gem para serializar
+
+  # Para gerar tokens JWT
+  gem "jwt"
+
+  # Para armazenar senhas hashadas
+  gem "bcrypt", "~> 3.1.7"
