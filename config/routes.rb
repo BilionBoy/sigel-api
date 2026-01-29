@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post "login", to: "auth#login"
+      get "me",     to: "users#me"
 
-      # EXEMPLO DE ROTA PROTEGIDA
-      get "me", to: "users#me"
+      resources :g_tipos_veiculos
     end
   end
 end

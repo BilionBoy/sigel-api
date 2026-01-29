@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_01_27_124734) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_29_140655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "g_tipos_veiculos", force: :cascade do |t|
+    t.string "descricao"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_g_tipos_veiculos_on_deleted_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "nome"
