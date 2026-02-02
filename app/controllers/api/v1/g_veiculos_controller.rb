@@ -89,7 +89,8 @@ module Api
             :cor,
             :moto,
             :g_tipo_veiculo_id,
-            :tombamento
+            :tombamento,
+            :apto
           )
       end
     end

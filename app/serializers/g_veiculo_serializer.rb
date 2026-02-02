@@ -8,6 +8,7 @@ class GVeiculoSerializer < ActiveModel::Serializer
              :renavam,
              :marca,
              :modelo,
+            :apto,
              :ano,
              :cor,
              :moto,
