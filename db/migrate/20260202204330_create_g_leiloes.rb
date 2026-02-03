@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateGLeilaos < ActiveRecord::Migration[7.2]
+class CreateGLeiloes < ActiveRecord::Migration[7.2]
   def up
     return if table_exists?(:g_leiloes)
 
