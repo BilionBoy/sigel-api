@@ -6,9 +6,13 @@ module Api
       before_action :set_g_veiculo, only: %i[show update destroy]
 
       def index
-        query  = GVeiculo.ransack(params[:q])
+        veiculos = GVeiculo.where(deleted_at: nil)
+
+        veiculos = aplicar_filtro_status(veiculos)
+
+        query  = veiculos.ransack(params[:q])
         result = paginate(
-          query.result.where(deleted_at: nil).order(:id),
+          query.result.order(:id),
           params[:per_page]
         )
 
@@ -66,6 +70,18 @@ module Api
 
       private
 
+      def aplicar_filtro_status(veiculos)
+        return veiculos if params[:status].blank? || params[:status] == "todos"
+
+        status_validos = %w[verificado_apto pendente impedido em_leilao arrematado]
+
+        if status_validos.include?(params[:status])
+          veiculos.where(status: params[:status])
+        else
+          veiculos
+        end
+      end
+
       def set_g_veiculo
         @g_veiculo = GVeiculo.where(deleted_at: nil).find(params[:id])
       rescue ActiveRecord::RecordNotFound
@@ -90,7 +106,8 @@ module Api
             :moto,
             :g_tipo_veiculo_id,
             :tombamento,
-            :apto
+            :apto,
+            :status
           )
       end
     end

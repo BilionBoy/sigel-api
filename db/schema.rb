@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_02_203848) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_03_011333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "g_leiloes", force: :cascade do |t|
+    t.string "titulo"
+    t.string "codigo"
+    t.date "data_inicio_prevista"
+    t.date "data_termino_prevista"
+    t.text "observacoes"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_g_leiloes_on_deleted_at"
+  end
 
   create_table "g_tipos_veiculos", force: :cascade do |t|
     t.string "descricao"
@@ -38,6 +50,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_02_203848) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "apto", default: false, null: false
+    t.string "status", default: "pendente", null: false
     t.index ["deleted_at"], name: "index_g_veiculos_on_deleted_at"
     t.index ["g_tipo_veiculo_id"], name: "index_g_veiculos_on_g_tipo_veiculo_id"
   end
