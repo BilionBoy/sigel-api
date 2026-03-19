@@ -62,7 +62,7 @@ end
   gem "jwt"
 
   # Para armazenar senhas hashadas
-  gem "bcrypt", "~> 3.1.7"
+  gem "bcrypt", "~> 3.1.22"
 
   # Mapear Models
   gem "annotate", "~> 3.2"
@@ -73,4 +73,4 @@ end
   gem "jwt"
 
   # Para armazenar senhas hashadas
-  gem "bcrypt", "~> 3.1.7"
+  gem "bcrypt", "~> 3.1.22"
