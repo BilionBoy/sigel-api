@@ -41,7 +41,7 @@ end
 
 
   # Gem para paginaçao
-  gem "pagy", "~> 5.10"
+  gem "pagy", "~> 43.5"
 
   # Gem para Postgres
   gem "pg"
